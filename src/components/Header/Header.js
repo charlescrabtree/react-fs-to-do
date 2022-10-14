@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-import { signOut } from '../../services/Word';
+import { signOut } from '../../services/Auth';
 import './Header.css';
 
 export default function Header() {

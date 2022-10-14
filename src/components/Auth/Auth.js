@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-import { authUser } from '../../services/Word';
+import { authUser } from '../../services/Auth';
 import './Auth.css';
 
 export default function Auth() {
