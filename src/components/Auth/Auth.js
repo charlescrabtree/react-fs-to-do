@@ -21,24 +21,23 @@ export default function Auth() {
   if (user) return <Redirect to='/todos' />;
 
   return (
-    <div></div>
-    // <div className='container'>
-    //   <div>
-    //     <label className='label'>Email</label>
+    <div className='container'>
+      <div>
+        <label className='label'>Email</label>
         
-    //     <input className='input' type='text' placeholder='email@email.com' value={email} onChange={(e) => {
-    //       setEmail(e.target.value);
-    //     }} />
+        <input className='input' type='text' placeholder='email@email.com' value={email} onChange={(e) => {
+          setEmail(e.target.value);
+        }} />
         
-    //     <div>
-    //       <label className='label'>Password</label>
-    //       <input className='password' type='text' placeholder='Password please' value={password} onChange={(e) => {
-    //         setPassword(e.target.value);
-    //       }} />
-    //     </div>
-    //     <button className='button' onClick={useAuth}>Submit</button>
-    //   </div>
-    // </div>
+        <div>
+          <label className='label'>Password</label>
+          <input className='password' type='text' placeholder='Password please' value={password} onChange={(e) => {
+            setPassword(e.target.value);
+          }} />
+        </div>
+        <button className='button' onClick={useAuth}>Submit</button>
+      </div>
+    </div>
 
   );
 }
