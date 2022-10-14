@@ -24,9 +24,15 @@ export default function Auth() {
     <div className='container'>
       <div>
         <label className='label'>Email</label>
+        
+        <input className='input' type='text' placeholder='email@email.com' value={email} onChange={(e) => {
+          setEmail(e.target.value);
+        }} />
+        
         <div>
-          <input className='input' type='text' placeholder='email@email.com' value={email} onChange={(e) => {
-            setEmail(e.target.value);
+          <label className='label'>Password</label>
+          <input className='password' type='text' placeholder='Password please' value={password} onChange={(e) => {
+            setPassword(e.target.value);
           }} />
         </div>
         <button className='button' onClick={useAuth}>Submit</button>
