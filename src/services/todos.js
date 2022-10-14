@@ -17,3 +17,15 @@ export async function deleteTodo(id) {
 
   return checkError(response);
 }
+
+export async function completeTodo(id, complete) {
+  const response = await client.from('todos').update({ complete }).match({ id }).single();
+
+  return checkError(response);
+}
+
+export async function getTodoById(id) {
+  const response = await client.from('todos').select().match({ id });
+
+  return checkError(response);
+}

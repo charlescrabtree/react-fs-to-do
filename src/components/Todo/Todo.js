@@ -1,4 +1,4 @@
-import { deleteTodo } from '../../services/todos';
+import { completeTodo, deleteTodo } from '../../services/todos';
 
 export default function Todo({ id, complete, description, setTodos }) {
   const handleDelete = async () => {
@@ -7,7 +7,7 @@ export default function Todo({ id, complete, description, setTodos }) {
   };
 
   const handleCompleteTodo = async () => {
-    await handleCompleteTodo(id, !complete);
+    await completeTodo(id, !complete);
     setTodos(prev => prev.map(todo => todo.id === id ? { ...todo, complete: !todo.complete } : todo));
   };
 
