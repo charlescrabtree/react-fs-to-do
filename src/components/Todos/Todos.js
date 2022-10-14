@@ -27,7 +27,7 @@ export default function Todos() {
         <button onClick={handleAddTodo}>Add</button>
       </div>
       <div className='todos'>
-        {todos.map(todo => <Todo key={todo.id} />)}
+        {todos.map(todo => <Todo key={todo.id} { ...todo } setTodos={setTodos} todos={todos} />)}
       </div>
     </div>
   );

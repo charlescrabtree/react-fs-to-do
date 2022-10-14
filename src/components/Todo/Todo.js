@@ -1,5 +1,5 @@
 import { completeTodo, deleteTodo } from '../../services/todos';
-
+import './Todo.css';
 export default function Todo({ id, complete, description, setTodos }) {
   const handleDelete = async () => {
     await deleteTodo(id);
