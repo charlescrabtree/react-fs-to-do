@@ -1,15 +1,37 @@
-import { client } from './client';
+import { useContext, useState } from 'react';
+import { Redirect, useParams } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
+import { authUser } from '../../services/auth';
+import './Auth.css';
 
-export async function authUser(email, password, type) {
-  let response = type === 'sign-in' ?
-    await client.auth.signIn({ email, password }) :
-    await client.auth.signUp({ email, password });
+export default function Auth() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { type } = useParams();
 
-  return response.user;
+  const { user, setUser } = useContext(UserContext);
+
+  const useAuth = async () => {
+    const userResp = await authUser(email, password, type);
+    setUser(userResp);
+    setEmail('');
+    setPassword('');
+  };
+  
+  if (user) return <Redirect to='/todos' />;
+
+  return (
+    <div className='container'>
+      <div>
+        <label className='label'>Email</label>
+        <div>
+          <input className='input' type='text' placeholder='email@email.com' value={email} onChange={(e) => {
+            setEmail(e.target.value);
+          }} />
+        </div>
+        <button className='button' onClick={useAuth}>Submit</button>
+      </div>
+    </div>
+
+  );
 }
-
-export const getUser = () => client.auth.currentUser;
-
-export const signOut = async () => {
-  await client.auth.signOut();
-};
