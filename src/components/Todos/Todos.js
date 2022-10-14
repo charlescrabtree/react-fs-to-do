@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { useTodos } from '../../hooks/useTodos';
 import { newToDo } from '../../services/todos';
+import Todo from '../Todo/Todo';
 
 export default function Todos() {
   const { user } = useContext(UserContext);
@@ -12,8 +13,8 @@ export default function Todos() {
   if (!user) return <Redirect to='/auth/sign-in' />;
 
   const handleAddTodo = async () => {
-    await newToDo(description);
-    setTodos((prevTodos) => [...prevTodos, { description }]);
+    const addNewToDo = await newToDo(description);
+    setTodos((prevTodos) => [...prevTodos, addNewToDo]);
     setDescription('');
   };
 
@@ -26,7 +27,7 @@ export default function Todos() {
         <button onClick={handleAddTodo}>Add</button>
       </div>
       <div className='todos'>
-        {todos.map(todo => <h3 key={todo.id}>{todo.description}</h3>)}
+        {todos.map(todo => <Todo key={todo.id} />)}
       </div>
     </div>
   );

@@ -7,7 +7,13 @@ export async function getTodos() {
 }
 
 export async function newToDo(description) {
-  const response = await client.from('todos').insert({ description });
+  const response = await client.from('todos').insert({ description }).single();
+
+  return checkError(response);
+}
+
+export async function deleteTodo(id) {
+  const response = await client.from('todos').delete().match({ id }).single();
 
   return checkError(response);
 }
